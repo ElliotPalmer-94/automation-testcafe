@@ -1,0 +1,26 @@
+{
+  "name": "automation-testcafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "testcafe",
+    "tc:chrome": "testcafe chrome",
+    "tc:edge": "testcafe edge"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElliotPalmer-94/automation-testcafe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElliotPalmer-94/automation-testcafe/issues"
+  },
+  "homepage": "https://github.com/ElliotPalmer-94/automation-testcafe#readme",
+  "devDependencies": {
+    "testcafe": "^1.8.8"
+  }
+}
