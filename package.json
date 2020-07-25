@@ -7,7 +7,6 @@
     "test": "testcafe",
     "tc:chrome": "testcafe chrome",
     "tc:edge": "testcafe edge"
-
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,7 @@
   },
   "homepage": "https://github.com/ElliotPalmer-94/automation-testcafe#readme",
   "devDependencies": {
+    "moment": "^2.27.0",
     "testcafe": "^1.8.8"
   }
 }
