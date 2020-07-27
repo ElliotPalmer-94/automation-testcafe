@@ -2,26 +2,37 @@ import * as crypto from 'crypto'
 import * as fs from 'fs'
 import { expect } from 'chai';
 
-const moment = require("moment");
-const date = moment().format('MMMM_Do_YYYY');
-const screenshot = process.cwd() + `/screenshots/screenshot_${date}.png`;
-const baselineHash = '2abd347db625c908d58be232027f914b';
+const screenshotPath = process.cwd() + `/screenshots/image.png`;
+const baselineHash = 'bfa5a70e2c1847ed9f00d93a6177033f';
+
+//Create hash for the screenshot
+function createHash() {
+    var a = crypto.createHash('md5').update(screenshotPath).digest('hex');
+    return a
+}
+
+// return image hash
+const hash = createHash()
 
 fixture`Login`
     .page`http://the-internet.herokuapp.com`;
 
 test('Image - Screenshot Compare using hash', async t => {
 
-    await t.takeScreenshot(`screenshot_${date}.png`);
+    if (fs.existsSync(screenshotPath)) {
+        console.log('screenshot already exist, comparing hash now....');
 
-    var hash = crypto.createHash('md5').update(screenshot).digest('hex');
+        await t.expect(hash).eql(baselineHash)
 
-    // await t.expect(hash).eql(baselineHash)
+    } else {
+        console.log('screenshot does not exist, taking screenshot now....');
+        await t.takeScreenshot(`image.png`);
 
-    console.log(baselineHash);
-    console.log(hash);
+        createHash();
 
- 
+        console.log('comparing hash now....')
+        await t.expect(hash).eql(baselineHash)
+    }
 
 });
 

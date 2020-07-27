@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/ElliotPalmer-94/automation-testcafe#readme",
   "devDependencies": {
-    "moment": "^2.27.0",
     "testcafe": "^1.8.8"
   }
 }

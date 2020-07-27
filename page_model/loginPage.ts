@@ -1,6 +1,6 @@
-import { Selector } from "testcafe";
+import { Selector, t } from "testcafe";
 
-class Page {
+class loginPage {
     
     loginButton: Selector;
     passwordInput: Selector;
@@ -20,6 +20,14 @@ class Page {
         this.failedLoginMessage = Selector('[id="flash"]');
 
     }
+
+    async login (username, password) {
+        await t
+            .typeText(this.usernameInput, username)
+            .typeText(this.passwordInput, password)
+
+            .click(this.loginButton);
+    }
 }
 
-export default new Page();
+export default new loginPage();
